@@ -35,6 +35,8 @@ namespace MarkovMapGenerator {
             using (Pen big_pen = new Pen(Color.Black, brushThickness)) {
                 foreach (var hex in storage.Values) {
                     e.Graphics.DrawPolygon(big_pen, l.PolygonCorners(hex));
+                    if (hex.Filled)
+                        e.Graphics.FillPolygon(Brushes.Red, l.PolygonCorners(hex));
                 }
             }
         }
@@ -49,7 +51,7 @@ namespace MarkovMapGenerator {
         private void pointyRadio_CheckedChanged(object sender, EventArgs e) {
             storage.Clear();
             // refill storage so that things draw correctly
-            double hex_width, hex_height, ws, hs;
+            double ws, hs;
             o = HexMap.Layout.pointy;
             hex_size = Convert.ToInt32(sizeBox.Text);
             hex_width = Math.Sqrt(3) * hex_size;
@@ -74,7 +76,7 @@ namespace MarkovMapGenerator {
         private void flatRadio_CheckedChanged(object sender, EventArgs e) {
             storage.Clear();
             // refill storage so that things draw correctly
-            double hex_width, hex_height, ws, hs;
+            double ws, hs;
             o = HexMap.Layout.flat;
             int hex_size = Convert.ToInt32(sizeBox.Text);
 
@@ -101,8 +103,10 @@ namespace MarkovMapGenerator {
         private void pBox_DoubleClick(object sender, EventArgs e) {
             MouseEventArgs me = (MouseEventArgs)e;
             Point coordinates = me.Location;
-            l.GetFromClick(coordinates).SetFilled();
-            return;
+            var myHex = l.GetFromClick(coordinates);
+            var t = new Tuple<int, int>(myHex.q, myHex.r);
+            storage[t].SetFilled();
+            this.Refresh();
         }
 
         private void pBox_Click(object sender, EventArgs e) {
