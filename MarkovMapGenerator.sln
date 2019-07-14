@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkovMapGenerator", "MarkovMapGenerator\MarkovMapGenerator.csproj", "{906E3FA6-8FC4-4EE9-975A-2859FAD95A15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexMap", "HexMap\HexMap.csproj", "{D1CBE61B-7041-430D-99F3-167DB670D25F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{906E3FA6-8FC4-4EE9-975A-2859FAD95A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{906E3FA6-8FC4-4EE9-975A-2859FAD95A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{906E3FA6-8FC4-4EE9-975A-2859FAD95A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1CBE61B-7041-430D-99F3-167DB670D25F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1CBE61B-7041-430D-99F3-167DB670D25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1CBE61B-7041-430D-99F3-167DB670D25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1CBE61B-7041-430D-99F3-167DB670D25F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
