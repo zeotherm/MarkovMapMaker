@@ -6,12 +6,35 @@ namespace HexMap {
         public readonly int q;
         public readonly int r;
         public readonly int s;
-
+        
         public Hex(int q, int r, int s) {
             this.q = q;
             this.r = r;
             this.s = s;
             if (q + r + s != 0) throw new ArgumentException("q + r + s must equal 0");
+        }
+        public bool Filled { get; private set; }
+        public void SetFilled() => Filled = true;
+        public Hex(double qf, double rf, double sf) {
+            if (Math.Round(qf + rf + sf) != 0) throw new ArgumentException("q + r + s must be 0");
+
+            int qi = Convert.ToInt32(Math.Round(qf));
+            int ri = Convert.ToInt32(Math.Round(rf));
+            int si = Convert.ToInt32(Math.Round(sf));
+            double q_diff = Math.Abs(qi - qf);
+            double r_diff = Math.Abs(ri - rf);
+            double s_diff = Math.Abs(si - sf);
+            if (q_diff > r_diff && q_diff > s_diff) {
+                qi = -ri - si;
+            } else
+                if (r_diff > s_diff) {
+                ri = -qi - si;
+            } else {
+                si = -qi - ri;
+            }
+            this.q = qi;
+            this.s = si;
+            this.r = ri;
         }
 
         public Hex(int q, int r) {

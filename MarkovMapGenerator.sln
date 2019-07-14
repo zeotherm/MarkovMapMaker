@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkovMapGenerator", "MarkovMapGenerator\MarkovMapGenerator.csproj", "{906E3FA6-8FC4-4EE9-975A-2859FAD95A15}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D1CBE61B-7041-430D-99F3-167DB670D25F} = {D1CBE61B-7041-430D-99F3-167DB670D25F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexMap", "HexMap\HexMap.csproj", "{D1CBE61B-7041-430D-99F3-167DB670D25F}"
 EndProject
