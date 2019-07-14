@@ -2,25 +2,49 @@
 using System.Collections.Generic;
 
 namespace HexMap {
+
     public class Hex : IEquatable<Hex> {
         public readonly int q;
         public readonly int r;
         public readonly int s;
-        
         public Hex(int q, int r, int s) {
             this.q = q;
             this.r = r;
             this.s = s;
+            this.Type = State.EMPTY;
             if (q + r + s != 0) throw new ArgumentException("q + r + s must equal 0");
         }
         public bool Filled { get; private set; }
         public void SetFilled() => Filled = true;
+        public void ClearFilled() => Filled = false;
+
+        public State Type { get; private set; }
+        public void CycleType() {
+            switch (Type) {
+                case State.EMPTY:
+                    Type = State.SEA;
+                    break;
+                case State.SEA:
+                    Type = State.LAND;
+                    break;
+                case State.LAND:
+                    Type = State.EMPTY;
+                    break;
+            }
+        }
+        public void SetType(State t) => Type = t;
+        public void EraseType() => Type = State.EMPTY;
+        public void Clear() {
+            ClearFilled();
+            EraseType();
+        }
         public Hex(double qf, double rf, double sf) {
             if (Math.Round(qf + rf + sf) != 0) throw new ArgumentException("q + r + s must be 0");
 
             int qi = Convert.ToInt32(Math.Round(qf));
             int ri = Convert.ToInt32(Math.Round(rf));
             int si = Convert.ToInt32(Math.Round(sf));
+
             double q_diff = Math.Abs(qi - qf);
             double r_diff = Math.Abs(ri - rf);
             double s_diff = Math.Abs(si - sf);
@@ -63,6 +87,14 @@ namespace HexMap {
         }
 
         public Hex Neighbor(int d) => this + Hex.direction(d);
+
+        public List<Hex> Neighbors() {
+            List<Hex> ret = new List<Hex>();
+            for ( int i = 0; i < 6; i++) {
+                ret.Add(Neighbor(i));
+            }
+            return ret;
+        }
 
         private static List<Hex> diagonals = new List<Hex> { new Hex(2, -1, -1), new Hex(1, -2, 1),  new Hex(-1, -1, 2),
                                                        new Hex(-2, 1, 1),  new Hex(-1, 2, -1), new Hex(1, 1, -2) };

@@ -17,7 +17,7 @@ namespace HexMap {
         public static Orientation pointy = new Orientation(Math.Sqrt(3.0), Math.Sqrt(3.0) / 2.0, 0.0, 1.5, 0.5);
         public static Orientation flat = new Orientation(1.5, 0.0, Math.Sqrt(3.0) / 2.0, Math.Sqrt(3.0), 0.0);
 
-        private PointF CenterPixel(Hex h) {
+        public PointF CenterPixel(Hex h) {
             Orientation O = orientation;
             var x = (float)(O.M_00 * h.q + O.M_01 * h.r) * size.X;
             var y = (float)(O.M_10 * h.q + O.M_11 * h.r) * size.Y;
@@ -26,10 +26,10 @@ namespace HexMap {
 
         public Hex GetFromClick(Point p) {
             Orientation O = orientation;
-            var pt = new PointF((p.X - origin.X) / size.X,
-                                (p.Y - origin.Y) / size.Y);
-            double q = O.M_00 * pt.X + O.M_01 * pt.Y;
-            double r = O.M_10 * pt.X + O.M_11 * pt.Y;
+
+            var pt = new PointF((float)(p.X - origin.X) / size.X, (float)(p.Y - origin.Y) / size.Y);
+            double q = O.Minv_00 * pt.X + O.Minv_01 * pt.Y;
+            double r = O.Minv_10 * pt.X + O.Minv_11 * pt.Y;
             return new Hex(q, r, -q - r);
         }
 
