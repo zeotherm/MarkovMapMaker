@@ -65,6 +65,7 @@ namespace HexMap {
             this.q = q;
             this.r = r;
             this.s = -q - r; // for constraint q + r + s == 0
+            this.Type = State.EMPTY;
         }
 
         public static Hex operator +(Hex l, Hex r) => new Hex(l.q + r.q, l.r + r.r, l.s + r.s);

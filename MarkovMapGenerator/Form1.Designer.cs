@@ -72,7 +72,24 @@
             this.stackDepthLbl = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.emptyLocsLbl = new System.Windows.Forms.Label();
+            this.transPosBtn = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.seaSeaTransTxt = new System.Windows.Forms.Label();
+            this.seaLandTransTxt = new System.Windows.Forms.Label();
+            this.landSeaTransTxt = new System.Windows.Forms.Label();
+            this.landLandTransTxt = new System.Windows.Forms.Label();
+            this.numSeaTxt = new System.Windows.Forms.Label();
+            this.numLandTxt = new System.Windows.Forms.Label();
+            this.numEmptyTxt = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pBox)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pBox
@@ -519,11 +536,172 @@
             this.emptyLocsLbl.TabIndex = 48;
             this.emptyLocsLbl.Text = "0";
             // 
+            // transPosBtn
+            // 
+            this.transPosBtn.Location = new System.Drawing.Point(1021, 37);
+            this.transPosBtn.Name = "transPosBtn";
+            this.transPosBtn.Size = new System.Drawing.Size(129, 31);
+            this.transPosBtn.TabIndex = 49;
+            this.transPosBtn.Text = "Trans Probs.";
+            this.transPosBtn.UseVisualStyleBackColor = true;
+            this.transPosBtn.Click += new System.EventHandler(this.transPosBtn_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(13, 21);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(71, 17);
+            this.label19.TabIndex = 50;
+            this.label19.Text = "SEA-SEA:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(13, 40);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(81, 17);
+            this.label20.TabIndex = 51;
+            this.label20.Text = "SEA-LAND:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(13, 59);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(81, 17);
+            this.label21.TabIndex = 52;
+            this.label21.Text = "LAND-SEA:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(13, 78);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(91, 17);
+            this.label22.TabIndex = 53;
+            this.label22.Text = "LAND-LAND:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(13, 108);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(73, 17);
+            this.label23.TabIndex = 54;
+            this.label23.Text = "Sea Total:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(13, 125);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(80, 17);
+            this.label24.TabIndex = 55;
+            this.label24.Text = "Land Total:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(13, 142);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(87, 17);
+            this.label25.TabIndex = 56;
+            this.label25.Text = "Empty Total:";
+            // 
+            // seaSeaTransTxt
+            // 
+            this.seaSeaTransTxt.AutoSize = true;
+            this.seaSeaTransTxt.Location = new System.Drawing.Point(113, 21);
+            this.seaSeaTransTxt.Name = "seaSeaTransTxt";
+            this.seaSeaTransTxt.Size = new System.Drawing.Size(23, 17);
+            this.seaSeaTransTxt.TabIndex = 57;
+            this.seaSeaTransTxt.Text = "---";
+            // 
+            // seaLandTransTxt
+            // 
+            this.seaLandTransTxt.AutoSize = true;
+            this.seaLandTransTxt.Location = new System.Drawing.Point(113, 38);
+            this.seaLandTransTxt.Name = "seaLandTransTxt";
+            this.seaLandTransTxt.Size = new System.Drawing.Size(23, 17);
+            this.seaLandTransTxt.TabIndex = 58;
+            this.seaLandTransTxt.Text = "---";
+            // 
+            // landSeaTransTxt
+            // 
+            this.landSeaTransTxt.AutoSize = true;
+            this.landSeaTransTxt.Location = new System.Drawing.Point(113, 59);
+            this.landSeaTransTxt.Name = "landSeaTransTxt";
+            this.landSeaTransTxt.Size = new System.Drawing.Size(23, 17);
+            this.landSeaTransTxt.TabIndex = 59;
+            this.landSeaTransTxt.Text = "---";
+            // 
+            // landLandTransTxt
+            // 
+            this.landLandTransTxt.AutoSize = true;
+            this.landLandTransTxt.Location = new System.Drawing.Point(113, 78);
+            this.landLandTransTxt.Name = "landLandTransTxt";
+            this.landLandTransTxt.Size = new System.Drawing.Size(23, 17);
+            this.landLandTransTxt.TabIndex = 60;
+            this.landLandTransTxt.Text = "---";
+            // 
+            // numSeaTxt
+            // 
+            this.numSeaTxt.AutoSize = true;
+            this.numSeaTxt.Location = new System.Drawing.Point(113, 108);
+            this.numSeaTxt.Name = "numSeaTxt";
+            this.numSeaTxt.Size = new System.Drawing.Size(23, 17);
+            this.numSeaTxt.TabIndex = 61;
+            this.numSeaTxt.Text = "---";
+            // 
+            // numLandTxt
+            // 
+            this.numLandTxt.AutoSize = true;
+            this.numLandTxt.Location = new System.Drawing.Point(113, 125);
+            this.numLandTxt.Name = "numLandTxt";
+            this.numLandTxt.Size = new System.Drawing.Size(23, 17);
+            this.numLandTxt.TabIndex = 62;
+            this.numLandTxt.Text = "---";
+            // 
+            // numEmptyTxt
+            // 
+            this.numEmptyTxt.AutoSize = true;
+            this.numEmptyTxt.Location = new System.Drawing.Point(113, 142);
+            this.numEmptyTxt.Name = "numEmptyTxt";
+            this.numEmptyTxt.Size = new System.Drawing.Size(23, 17);
+            this.numEmptyTxt.TabIndex = 63;
+            this.numEmptyTxt.Text = "---";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.numEmptyTxt);
+            this.groupBox1.Controls.Add(this.numLandTxt);
+            this.groupBox1.Controls.Add(this.numSeaTxt);
+            this.groupBox1.Controls.Add(this.landLandTransTxt);
+            this.groupBox1.Controls.Add(this.landSeaTransTxt);
+            this.groupBox1.Controls.Add(this.seaLandTransTxt);
+            this.groupBox1.Controls.Add(this.seaSeaTransTxt);
+            this.groupBox1.Controls.Add(this.label25);
+            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Location = new System.Drawing.Point(1083, 75);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(194, 173);
+            this.groupBox1.TabIndex = 64;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Mapper Stats";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1177, 628);
+            this.ClientSize = new System.Drawing.Size(1319, 628);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.transPosBtn);
             this.Controls.Add(this.emptyLocsLbl);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.stackDepthLbl);
@@ -576,6 +754,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pBox)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -632,6 +812,22 @@
         private System.Windows.Forms.Label stackDepthLbl;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label emptyLocsLbl;
+        private System.Windows.Forms.Button transPosBtn;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label seaSeaTransTxt;
+        private System.Windows.Forms.Label seaLandTransTxt;
+        private System.Windows.Forms.Label landSeaTransTxt;
+        private System.Windows.Forms.Label landLandTransTxt;
+        private System.Windows.Forms.Label numSeaTxt;
+        private System.Windows.Forms.Label numLandTxt;
+        private System.Windows.Forms.Label numEmptyTxt;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

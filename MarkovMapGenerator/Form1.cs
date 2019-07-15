@@ -19,10 +19,14 @@ namespace MarkovMapGenerator {
         private HexMap.Orientation o;
         private double hex_width, hex_height;
         private List<Tuple<int, int>> Locations = new List<Tuple<int, int>>();
-        private MarkovMapper m = new MarkovMapper();
+        private MarkovMapper m;
+        private bool mapperInitialized;
+        private TransitionProbabilitiesForm transForm;
 
         public Form1() {
             InitializeComponent();
+            mapperInitialized = false;
+            transForm = new TransitionProbabilitiesForm();
         }
 
         private void pBox_Paint(object sender, PaintEventArgs e) {
@@ -70,6 +74,7 @@ namespace MarkovMapGenerator {
                 hex.ClearFilled();
                 hex.EraseType();
             }
+            UpdateDetailsText();
             this.Refresh();
         }
 
@@ -119,9 +124,27 @@ namespace MarkovMapGenerator {
             pBox_DoubleClick(sender, meA);
         }
 
+        private void UpdateTransitionDisplay() {
+            var t_mat = m.transitionMatrix;
+            seaSeaTransTxt.Text = String.Format("{0:0.000}", t_mat[(int)State.SEA, (int)State.SEA]);
+            seaLandTransTxt.Text = String.Format("{0:0.000}", t_mat[(int)State.SEA, (int)State.LAND]);
+            landSeaTransTxt.Text = String.Format("{0:0.000}", t_mat[(int)State.LAND, (int)State.SEA]);
+            landLandTransTxt.Text = String.Format("{0:0.000}", t_mat[(int)State.LAND, (int)State.LAND]);
+        }
+
         private async void genBtn_ClickAsync(object sender, EventArgs e) {
             Random rand = new Random();
+            if (!mapperInitialized) m = new MarkovMapper(transForm.defaultTransitions);
+            UpdateTransitionDisplay();
             // Start at the top left, assigning states as we go along
+            State initState;
+            if (rand.NextDouble() > 0.5) {
+                initState = State.SEA;
+            } else {
+                initState = State.LAND;
+            }
+            var topLeft = storage[new Tuple<int, int>(0, 0)];
+            if(topLeft.Type == State.EMPTY) topLeft.SetType(initState);
             var emptyLocations = Locations.Where(t => storage[t].Type == State.EMPTY).ToList();
             Hex h = storage[new Tuple<int, int>(0,0)];
             emptyLocsLbl.Text = emptyLocations.Count.ToString();
@@ -145,15 +168,20 @@ namespace MarkovMapGenerator {
                 stackDepthLbl.Text = neighborStack.Count().ToString();
                 emptyLocations = Locations.Where(t => storage[t].Type == State.EMPTY).ToList();
                 var empties = emptyLocations.Count;
-                emptyLocsLbl.Text = empties.ToString();
+                var counts = storage.Values.GroupBy(s => s.Type).ToDictionary(gdc => gdc.Key, gdc => gdc.Count());
+                emptyLocsLbl.Text = counts.ContainsKey(State.EMPTY) ? counts[State.EMPTY].ToString() : "0";
+                numSeaTxt.Text = counts.ContainsKey(State.SEA) ? counts[State.SEA].ToString() : "0";
+                numLandTxt.Text = counts.ContainsKey(State.LAND) ? counts[State.LAND].ToString() : "0";
+                numEmptyTxt.Text = emptyLocsLbl.Text;
                 if (empties == 0) break;
 
             }
+            UpdateDetailsText();
             MessageBox.Show("Done!", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Refresh();
         }
         private async Task DrawNewState(Hex h, Tuple<int, int> coord) {
-            await Task.Delay(25);
+            //await Task.Delay(25);
             storage[coord].SetType(m.GenerateNewState(h));
             this.Refresh();
         }
@@ -167,11 +195,40 @@ namespace MarkovMapGenerator {
 
         private Tuple<int, int> Coord(int q, int r) => new Tuple<int, int>(q, r);
 
+        private void transPosBtn_Click(object sender, EventArgs e) {
+            if(transForm.ShowDialog() == DialogResult.OK) {
+                m = new MarkovMapper(transForm.Transitions);
+                mapperInitialized = true;
+                UpdateTransitionDisplay();
+            }
+        }
+
         private void drawButton_Click(object sender, EventArgs e) {
             if (pointyRadio.Checked)
                 pointyRadio_CheckedChanged(sender, e);
             else
                 flatRadio_CheckedChanged(sender, e);
+            UpdateDetailsText();
+        }
+
+        private void UpdateDetailsText() {
+            numEmptyTxt.Text = "0";
+            numSeaTxt.Text = "0";
+            numLandTxt.Text = "0";
+            var groups = storage.Values.GroupBy(s => s.Type);
+            foreach(var group in groups) {
+                switch(group.Key) {
+                    case State.EMPTY:
+                        numEmptyTxt.Text = group.Count().ToString();
+                        break;
+                    case State.SEA:
+                        numSeaTxt.Text = group.Count().ToString();
+                        break;
+                    case State.LAND:
+                        numLandTxt.Text = group.Count().ToString();
+                        break;
+                }
+            }
         }
 
         private void pointyRadio_CheckedChanged(object sender, EventArgs e) {
@@ -242,6 +299,7 @@ namespace MarkovMapGenerator {
             qValLbl.Text = myHex.q.ToString();
             rValLbl.Text = myHex.r.ToString();
             if (storage.ContainsKey(t)) storage[t].CycleType();
+            UpdateDetailsText();
             this.Refresh();
         }
 
