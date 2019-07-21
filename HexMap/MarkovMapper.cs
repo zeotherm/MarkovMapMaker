@@ -11,7 +11,7 @@ namespace HexMap {
 
         public State GenerateNewState(Hex n) {
             State neighborState = n.Type;
-            Random r = new Random(1000);
+            Random r = new Random();
             if (neighborState == State.EMPTY) throw new ArgumentException("A given neighbor cell did not have it's state set");
             if( neighborState == State.SEA) {
                 if ( r.NextDouble() <= transitionMatrix[(int)State.SEA, (int)State.LAND]) {

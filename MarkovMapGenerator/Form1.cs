@@ -142,7 +142,7 @@ namespace MarkovMapGenerator {
         }
 
         private async void genBtn_ClickAsync(object sender, EventArgs e) {
-            Random rand = new Random(1000);
+            Random rand = new Random();
             if (!mapperInitialized) m = new MarkovMapper(transForm.defaultTransitions);
             UpdateTransitionDisplay();
             // Start at the top left, assigning states as we go along
@@ -222,7 +222,7 @@ namespace MarkovMapGenerator {
             this.Refresh();
         }
         private async Task DrawNewState(Hex markovBasis, Tuple<int, int> newHexCoords) {
-            await Task.Delay(150);
+            await Task.Delay(10);
             var thisHex = storage[newHexCoords];
             var neighbors = thisHex.Neighbors();
             foreach( var n in neighbors) {
