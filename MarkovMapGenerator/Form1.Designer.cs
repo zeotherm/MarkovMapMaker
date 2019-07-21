@@ -88,6 +88,8 @@
             this.numLandTxt = new System.Windows.Forms.Label();
             this.numEmptyTxt = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.lblDistance = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -146,7 +148,7 @@
             this.sizeBox.Name = "sizeBox";
             this.sizeBox.Size = new System.Drawing.Size(124, 22);
             this.sizeBox.TabIndex = 4;
-            this.sizeBox.Text = "100";
+            this.sizeBox.Text = "12";
             // 
             // HexSizeLabel
             // 
@@ -695,11 +697,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mapper Stats";
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(1053, 602);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(67, 17);
+            this.label26.TabIndex = 65;
+            this.label26.Text = "Distance:";
+            // 
+            // lblDistance
+            // 
+            this.lblDistance.AutoSize = true;
+            this.lblDistance.Location = new System.Drawing.Point(1133, 602);
+            this.lblDistance.Name = "lblDistance";
+            this.lblDistance.Size = new System.Drawing.Size(23, 17);
+            this.lblDistance.TabIndex = 66;
+            this.lblDistance.Text = "---";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1319, 628);
+            this.Controls.Add(this.lblDistance);
+            this.Controls.Add(this.label26);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.transPosBtn);
             this.Controls.Add(this.emptyLocsLbl);
@@ -828,6 +850,8 @@
         private System.Windows.Forms.Label numLandTxt;
         private System.Windows.Forms.Label numEmptyTxt;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label lblDistance;
     }
 }
 

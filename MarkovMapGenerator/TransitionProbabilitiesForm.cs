@@ -14,7 +14,7 @@ namespace MarkovMapGenerator {
             seaSumLbl.Text = String.Format("{0:0.000}", Convert.ToDouble(seaLandTxt.Text) + Convert.ToDouble(seaSeaTxt.Text));
             landSumLbl.Text = String.Format("{0:0.000}", Convert.ToDouble(landLandTxt.Text) + Convert.ToDouble(landSeaTxt.Text));
             Transitions = new double[2, 2];
-            defaultTransitions = new double[2,2]{ { 0.8, 0.2}, { 0.05, 0.95} };
+            defaultTransitions = new double[2,2]{ { 0.99, 0.01}, { 0.005, 0.995} };
         }
 
         private void landLandTxt_TextChanged(object sender, EventArgs e) {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HexMap {
     public static class Extensions {
-        private static Random rng = new Random();
+        private static Random rng = new Random(1000);
 
         public static void Shuffle<T>(this IList<T> list) {
             int n = list.Count;

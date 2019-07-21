@@ -18,6 +18,18 @@ namespace HexMap {
         public void SetFilled() => Filled = true;
         public void ClearFilled() => Filled = false;
 
+        public bool IsPrevStateHex { get; private set; }
+        public void SetPrevStateBasis() => IsPrevStateHex = true;
+        public void UnSetPrevStateBasis() => IsPrevStateHex = false;
+
+        public bool IsNeighborHighlight { get; private set; }
+        public void SetNeighborHighlight() => IsNeighborHighlight = true;
+        public void UnSetNeighborHighlight() => IsNeighborHighlight = false;
+
+        public bool CurrentProcessedHex { get; private set; }
+        public void SetCurrentProcessedHex() => CurrentProcessedHex = true;
+        public void UnSetCurrentProcessedHex() => CurrentProcessedHex = false;
+
         public State Type { get; private set; }
         public void CycleType() {
             switch (Type) {

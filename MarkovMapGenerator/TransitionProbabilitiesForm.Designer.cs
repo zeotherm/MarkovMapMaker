@@ -70,7 +70,7 @@
             this.seaSeaTxt.Name = "seaSeaTxt";
             this.seaSeaTxt.Size = new System.Drawing.Size(100, 22);
             this.seaSeaTxt.TabIndex = 2;
-            this.seaSeaTxt.Text = "0.80";
+            this.seaSeaTxt.Text = "0.99";
             this.seaSeaTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.seaSeaTxt.TextChanged += new System.EventHandler(this.seaSeaTxt_TextChanged);
             // 
@@ -89,7 +89,7 @@
             this.seaLandTxt.Name = "seaLandTxt";
             this.seaLandTxt.Size = new System.Drawing.Size(100, 22);
             this.seaLandTxt.TabIndex = 4;
-            this.seaLandTxt.Text = "0.20";
+            this.seaLandTxt.Text = "0.01";
             this.seaLandTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.seaLandTxt.TextChanged += new System.EventHandler(this.seaLandTxt_TextChanged);
             // 
@@ -118,7 +118,7 @@
             this.landSeaTxt.Name = "landSeaTxt";
             this.landSeaTxt.Size = new System.Drawing.Size(100, 22);
             this.landSeaTxt.TabIndex = 7;
-            this.landSeaTxt.Text = "0.05";
+            this.landSeaTxt.Text = "0.005";
             this.landSeaTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.landSeaTxt.TextChanged += new System.EventHandler(this.landSeaTxt_TextChanged);
             // 
@@ -137,7 +137,7 @@
             this.landLandTxt.Name = "landLandTxt";
             this.landLandTxt.Size = new System.Drawing.Size(100, 22);
             this.landLandTxt.TabIndex = 9;
-            this.landLandTxt.Text = "0.95";
+            this.landLandTxt.Text = "0.995";
             this.landLandTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.landLandTxt.TextChanged += new System.EventHandler(this.landLandTxt_TextChanged);
             // 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -45,10 +46,9 @@ namespace MarkovMapGenerator {
             using (Font f = new Font("Arial", 10)) {
                 foreach (var hex in storage.Values) {
                     var points = l.PolygonCorners(hex);
-                    e.Graphics.DrawPolygon(big_pen, points);
-                    if (hex.Filled)
-                        e.Graphics.FillPolygon(Brushes.Red, points);
+                    //e.Graphics.DrawPolygon(big_pen, points);
                     Brush b = Brushes.Black;
+                    e.Graphics.DrawPolygon(new Pen(Brushes.Black, 1), points);
                     switch (hex.Type) {
                         case State.LAND:
                             b = Brushes.Green;
@@ -59,6 +59,15 @@ namespace MarkovMapGenerator {
                     }
                     if (hex.Type != State.EMPTY) {
                         e.Graphics.FillPolygon(b, points);
+                    }
+                    if (hex.Filled)
+                        e.Graphics.FillPolygon(Brushes.Red, points);
+                    if (hex.CurrentProcessedHex)
+                        e.Graphics.DrawPolygon(new Pen(Brushes.Red, 4), points);
+                    if (hex.IsPrevStateHex)
+                        e.Graphics.DrawPolygon(new Pen(Brushes.Black, 4), points);
+                    if(hex.IsNeighborHighlight) {
+                        e.Graphics.DrawPolygon(new Pen(Brushes.DarkOrange, 2), points);
                     }
                     if (showCoordsChk.Checked) {
                         var center = l.CenterPixel(hex);
@@ -133,7 +142,7 @@ namespace MarkovMapGenerator {
         }
 
         private async void genBtn_ClickAsync(object sender, EventArgs e) {
-            Random rand = new Random();
+            Random rand = new Random(1000);
             if (!mapperInitialized) m = new MarkovMapper(transForm.defaultTransitions);
             UpdateTransitionDisplay();
             // Start at the top left, assigning states as we go along
@@ -146,26 +155,58 @@ namespace MarkovMapGenerator {
             var topLeft = storage[new Tuple<int, int>(0, 0)];
             if(topLeft.Type == State.EMPTY) topLeft.SetType(initState);
             var emptyLocations = Locations.Where(t => storage[t].Type == State.EMPTY).ToList();
-            Hex h = storage[new Tuple<int, int>(0,0)];
+            Hex currentHex = storage[new Tuple<int, int>(0,0)];
             emptyLocsLbl.Text = emptyLocations.Count.ToString();
-            Stack<Tuple<int, int>> neighborStack = new Stack<Tuple<int, int>>();
-            var nbs = GetNeighborCoords(h).Where(c => storage[c].Type == State.EMPTY).ToList();
+            Stack<Tuple<int, int>> hexCoordStack = new Stack<Tuple<int, int>>();
+            var nbs = GetNeighborCoords(currentHex).Where(c => storage[c].Type == State.EMPTY).ToList();
             nbs.Shuffle();
             foreach (var eNeighb in nbs) {
-                neighborStack.Push(eNeighb);
+                hexCoordStack.Push(eNeighb);
             }
-            while (neighborStack.Count != 0) {
-                var noi = neighborStack.Pop();
-                if (storage[noi].Type != State.EMPTY) continue;
-                await DrawNewState(h, noi);
-                h = storage[noi];
-                var inbs = GetNeighborCoords(h).Where(c => storage[c].Type == State.EMPTY).ToList();
+            while (hexCoordStack.Count != 0) {
+                var nextHexCoord = hexCoordStack.Pop();
+                var nextHex = storage[nextHexCoord];
+                if (nextHex.Type != State.EMPTY) continue;
+                //var nextHexAssignedNeighbors = nextHex.Neighbors()
+                //    .SelectMany(nhn => GetNeighborCoords(nhn)).Where(nexth => storage[nexth].Type != State.EMPTY);
+
+                var nextHexAssignedNeighbors = GetNeighborCoords(nextHex).Where(nh => storage[nh].Type != State.EMPTY);
+
+                var neighborHexes = nextHexAssignedNeighbors.Select(n => storage[n]);
+
+                foreach (var n in neighborHexes) {
+                    if( n.Distance(nextHex) != 1) {
+                        int rr = 0;
+                    }
+                }
+
+                Hex filledNeighbor = null;
+                if (nextHexAssignedNeighbors.Count() > 0) {
+                    filledNeighbor = storage[nextHexAssignedNeighbors.First()];
+
+
+                }
+                //if( filledNeighbor == null) {
+                //    filledNeighbor = currentHex;
+                //}
+
+                if( !storage[nextHexCoord].Neighbors().Contains(filledNeighbor)) {
+                    int k = nextHexAssignedNeighbors.Count();
+                }
+                await DrawNewState(filledNeighbor, nextHexCoord);
+                lblDistance.Text = nextHex.Distance(filledNeighbor).ToString();
+                if (nextHex.Distance(filledNeighbor) != 1) {
+                    int j = nextHex.Distance(filledNeighbor);
+                    return;
+                }
+                currentHex = nextHex;
+                var inbs = GetNeighborCoords(currentHex).Where(c => storage[c].Type == State.EMPTY).ToList();
                 inbs.Shuffle();
 
                 foreach (var eNeighb in inbs) {
-                    neighborStack.Push(eNeighb);
+                    hexCoordStack.Push(eNeighb);
                 }
-                stackDepthLbl.Text = neighborStack.Count().ToString();
+                stackDepthLbl.Text = hexCoordStack.Count().ToString();
                 emptyLocations = Locations.Where(t => storage[t].Type == State.EMPTY).ToList();
                 var empties = emptyLocations.Count;
                 var counts = storage.Values.GroupBy(s => s.Type).ToDictionary(gdc => gdc.Key, gdc => gdc.Count());
@@ -180,10 +221,31 @@ namespace MarkovMapGenerator {
             MessageBox.Show("Done!", "Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Refresh();
         }
-        private async Task DrawNewState(Hex h, Tuple<int, int> coord) {
-            //await Task.Delay(25);
-            storage[coord].SetType(m.GenerateNewState(h));
+        private async Task DrawNewState(Hex markovBasis, Tuple<int, int> newHexCoords) {
+            await Task.Delay(150);
+            var thisHex = storage[newHexCoords];
+            var neighbors = thisHex.Neighbors();
+            foreach( var n in neighbors) {
+                var neighKey = new Tuple<int, int>(n.q, n.r);
+                if( storage.ContainsKey(neighKey)) storage[neighKey].SetNeighborHighlight();
+            }
+
+
+            storage[new Tuple<int, int>(markovBasis.q, markovBasis.r)].SetPrevStateBasis();
+            storage[newHexCoords].SetType(m.GenerateNewState(markovBasis));
+            storage[newHexCoords].SetCurrentProcessedHex();
             this.Refresh();
+            int j;
+            if (!neighbors.Contains(markovBasis)) {
+                await Task.Delay(2000);
+                j = 1;
+            }
+            storage[new Tuple<int, int>(markovBasis.q, markovBasis.r)].UnSetPrevStateBasis();
+            storage[newHexCoords].UnSetCurrentProcessedHex();
+            foreach (var n in neighbors) {
+                var neighKey = new Tuple<int, int>(n.q, n.r);
+                if (storage.ContainsKey(neighKey)) storage[neighKey].UnSetNeighborHighlight();
+            }
         }
 
         private List<Tuple<int, int>> GetNeighborCoords(Hex h) =>
