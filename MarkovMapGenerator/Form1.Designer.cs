@@ -73,23 +73,32 @@
             this.label18 = new System.Windows.Forms.Label();
             this.emptyLocsLbl = new System.Windows.Forms.Label();
             this.transPosBtn = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.seaSeaTransTxt = new System.Windows.Forms.Label();
-            this.seaLandTransTxt = new System.Windows.Forms.Label();
-            this.landSeaTransTxt = new System.Windows.Forms.Label();
-            this.landLandTransTxt = new System.Windows.Forms.Label();
             this.numSeaTxt = new System.Windows.Forms.Label();
             this.numLandTxt = new System.Windows.Forms.Label();
             this.numEmptyTxt = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.numHillTxt = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.lblDistance = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.CDF_SSLbl = new System.Windows.Forms.Label();
+            this.CDF_SLLbl = new System.Windows.Forms.Label();
+            this.CDF_SHLbl = new System.Windows.Forms.Label();
+            this.CDF_LSLbl = new System.Windows.Forms.Label();
+            this.CDF_LLLbl = new System.Windows.Forms.Label();
+            this.CDF_LHLbl = new System.Windows.Forms.Label();
+            this.CDF_HSLbl = new System.Windows.Forms.Label();
+            this.CDF_HLLbl = new System.Windows.Forms.Label();
+            this.CDF_HHLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -485,7 +494,7 @@
             // showCoordsChk
             // 
             this.showCoordsChk.AutoSize = true;
-            this.showCoordsChk.Location = new System.Drawing.Point(1037, 254);
+            this.showCoordsChk.Location = new System.Drawing.Point(921, 350);
             this.showCoordsChk.Name = "showCoordsChk";
             this.showCoordsChk.Size = new System.Drawing.Size(113, 21);
             this.showCoordsChk.TabIndex = 43;
@@ -548,46 +557,10 @@
             this.transPosBtn.UseVisualStyleBackColor = true;
             this.transPosBtn.Click += new System.EventHandler(this.transPosBtn_Click);
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(13, 21);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(71, 17);
-            this.label19.TabIndex = 50;
-            this.label19.Text = "SEA-SEA:";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(13, 40);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(81, 17);
-            this.label20.TabIndex = 51;
-            this.label20.Text = "SEA-LAND:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(13, 59);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(81, 17);
-            this.label21.TabIndex = 52;
-            this.label21.Text = "LAND-SEA:";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(13, 78);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(91, 17);
-            this.label22.TabIndex = 53;
-            this.label22.Text = "LAND-LAND:";
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(13, 108);
+            this.label23.Location = new System.Drawing.Point(13, 137);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(73, 17);
             this.label23.TabIndex = 54;
@@ -596,7 +569,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(13, 125);
+            this.label24.Location = new System.Drawing.Point(13, 154);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(80, 17);
             this.label24.TabIndex = 55;
@@ -605,52 +578,16 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(13, 142);
+            this.label25.Location = new System.Drawing.Point(13, 188);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(87, 17);
             this.label25.TabIndex = 56;
             this.label25.Text = "Empty Total:";
             // 
-            // seaSeaTransTxt
-            // 
-            this.seaSeaTransTxt.AutoSize = true;
-            this.seaSeaTransTxt.Location = new System.Drawing.Point(113, 21);
-            this.seaSeaTransTxt.Name = "seaSeaTransTxt";
-            this.seaSeaTransTxt.Size = new System.Drawing.Size(23, 17);
-            this.seaSeaTransTxt.TabIndex = 57;
-            this.seaSeaTransTxt.Text = "---";
-            // 
-            // seaLandTransTxt
-            // 
-            this.seaLandTransTxt.AutoSize = true;
-            this.seaLandTransTxt.Location = new System.Drawing.Point(113, 38);
-            this.seaLandTransTxt.Name = "seaLandTransTxt";
-            this.seaLandTransTxt.Size = new System.Drawing.Size(23, 17);
-            this.seaLandTransTxt.TabIndex = 58;
-            this.seaLandTransTxt.Text = "---";
-            // 
-            // landSeaTransTxt
-            // 
-            this.landSeaTransTxt.AutoSize = true;
-            this.landSeaTransTxt.Location = new System.Drawing.Point(113, 59);
-            this.landSeaTransTxt.Name = "landSeaTransTxt";
-            this.landSeaTransTxt.Size = new System.Drawing.Size(23, 17);
-            this.landSeaTransTxt.TabIndex = 59;
-            this.landSeaTransTxt.Text = "---";
-            // 
-            // landLandTransTxt
-            // 
-            this.landLandTransTxt.AutoSize = true;
-            this.landLandTransTxt.Location = new System.Drawing.Point(113, 78);
-            this.landLandTransTxt.Name = "landLandTransTxt";
-            this.landLandTransTxt.Size = new System.Drawing.Size(23, 17);
-            this.landLandTransTxt.TabIndex = 60;
-            this.landLandTransTxt.Text = "---";
-            // 
             // numSeaTxt
             // 
             this.numSeaTxt.AutoSize = true;
-            this.numSeaTxt.Location = new System.Drawing.Point(113, 108);
+            this.numSeaTxt.Location = new System.Drawing.Point(113, 137);
             this.numSeaTxt.Name = "numSeaTxt";
             this.numSeaTxt.Size = new System.Drawing.Size(23, 17);
             this.numSeaTxt.TabIndex = 61;
@@ -659,7 +596,7 @@
             // numLandTxt
             // 
             this.numLandTxt.AutoSize = true;
-            this.numLandTxt.Location = new System.Drawing.Point(113, 125);
+            this.numLandTxt.Location = new System.Drawing.Point(113, 154);
             this.numLandTxt.Name = "numLandTxt";
             this.numLandTxt.Size = new System.Drawing.Size(23, 17);
             this.numLandTxt.TabIndex = 62;
@@ -668,7 +605,7 @@
             // numEmptyTxt
             // 
             this.numEmptyTxt.AutoSize = true;
-            this.numEmptyTxt.Location = new System.Drawing.Point(113, 142);
+            this.numEmptyTxt.Location = new System.Drawing.Point(113, 188);
             this.numEmptyTxt.Name = "numEmptyTxt";
             this.numEmptyTxt.Size = new System.Drawing.Size(23, 17);
             this.numEmptyTxt.TabIndex = 63;
@@ -676,26 +613,80 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.numEmptyTxt);
-            this.groupBox1.Controls.Add(this.numLandTxt);
-            this.groupBox1.Controls.Add(this.numSeaTxt);
-            this.groupBox1.Controls.Add(this.landLandTransTxt);
-            this.groupBox1.Controls.Add(this.landSeaTransTxt);
-            this.groupBox1.Controls.Add(this.seaLandTransTxt);
-            this.groupBox1.Controls.Add(this.seaSeaTransTxt);
-            this.groupBox1.Controls.Add(this.label25);
-            this.groupBox1.Controls.Add(this.label24);
-            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.CDF_HHLbl);
+            this.groupBox1.Controls.Add(this.CDF_HLLbl);
+            this.groupBox1.Controls.Add(this.CDF_HSLbl);
+            this.groupBox1.Controls.Add(this.CDF_LHLbl);
+            this.groupBox1.Controls.Add(this.CDF_LLLbl);
+            this.groupBox1.Controls.Add(this.CDF_LSLbl);
+            this.groupBox1.Controls.Add(this.CDF_SHLbl);
+            this.groupBox1.Controls.Add(this.CDF_SLLbl);
+            this.groupBox1.Controls.Add(this.CDF_SSLbl);
+            this.groupBox1.Controls.Add(this.label29);
+            this.groupBox1.Controls.Add(this.label28);
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.numHillTxt);
+            this.groupBox1.Controls.Add(this.label27);
+            this.groupBox1.Controls.Add(this.numEmptyTxt);
+            this.groupBox1.Controls.Add(this.numLandTxt);
+            this.groupBox1.Controls.Add(this.numSeaTxt);
+            this.groupBox1.Controls.Add(this.label25);
+            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Location = new System.Drawing.Point(1083, 75);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(194, 173);
+            this.groupBox1.Size = new System.Drawing.Size(224, 212);
             this.groupBox1.TabIndex = 64;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mapper Stats";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(172, 34);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(18, 17);
+            this.label21.TabIndex = 68;
+            this.label21.Text = "H";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(113, 34);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(16, 17);
+            this.label20.TabIndex = 67;
+            this.label20.Text = "L";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(53, 34);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(17, 17);
+            this.label19.TabIndex = 66;
+            this.label19.Text = "S";
+            // 
+            // numHillTxt
+            // 
+            this.numHillTxt.AutoSize = true;
+            this.numHillTxt.Location = new System.Drawing.Point(113, 171);
+            this.numHillTxt.Name = "numHillTxt";
+            this.numHillTxt.Size = new System.Drawing.Size(23, 17);
+            this.numHillTxt.TabIndex = 65;
+            this.numHillTxt.Text = "---";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(13, 171);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(67, 17);
+            this.label27.TabIndex = 64;
+            this.label27.Text = "Hill Total:";
             // 
             // label26
             // 
@@ -714,6 +705,114 @@
             this.lblDistance.Size = new System.Drawing.Size(23, 17);
             this.lblDistance.TabIndex = 66;
             this.lblDistance.Text = "---";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(13, 54);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(17, 17);
+            this.label22.TabIndex = 69;
+            this.label22.Text = "S";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(13, 84);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(16, 17);
+            this.label28.TabIndex = 70;
+            this.label28.Text = "L";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(11, 114);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(18, 17);
+            this.label29.TabIndex = 71;
+            this.label29.Text = "H";
+            // 
+            // CDF_SSLbl
+            // 
+            this.CDF_SSLbl.AutoSize = true;
+            this.CDF_SSLbl.Location = new System.Drawing.Point(36, 54);
+            this.CDF_SSLbl.Name = "CDF_SSLbl";
+            this.CDF_SSLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_SSLbl.TabIndex = 72;
+            this.CDF_SSLbl.Text = "---";
+            // 
+            // CDF_SLLbl
+            // 
+            this.CDF_SLLbl.AutoSize = true;
+            this.CDF_SLLbl.Location = new System.Drawing.Point(96, 54);
+            this.CDF_SLLbl.Name = "CDF_SLLbl";
+            this.CDF_SLLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_SLLbl.TabIndex = 73;
+            this.CDF_SLLbl.Text = "---";
+            // 
+            // CDF_SHLbl
+            // 
+            this.CDF_SHLbl.AutoSize = true;
+            this.CDF_SHLbl.Location = new System.Drawing.Point(156, 54);
+            this.CDF_SHLbl.Name = "CDF_SHLbl";
+            this.CDF_SHLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_SHLbl.TabIndex = 74;
+            this.CDF_SHLbl.Text = "---";
+            // 
+            // CDF_LSLbl
+            // 
+            this.CDF_LSLbl.AutoSize = true;
+            this.CDF_LSLbl.Location = new System.Drawing.Point(36, 84);
+            this.CDF_LSLbl.Name = "CDF_LSLbl";
+            this.CDF_LSLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_LSLbl.TabIndex = 75;
+            this.CDF_LSLbl.Text = "---";
+            // 
+            // CDF_LLLbl
+            // 
+            this.CDF_LLLbl.AutoSize = true;
+            this.CDF_LLLbl.Location = new System.Drawing.Point(96, 84);
+            this.CDF_LLLbl.Name = "CDF_LLLbl";
+            this.CDF_LLLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_LLLbl.TabIndex = 76;
+            this.CDF_LLLbl.Text = "---";
+            // 
+            // CDF_LHLbl
+            // 
+            this.CDF_LHLbl.AutoSize = true;
+            this.CDF_LHLbl.Location = new System.Drawing.Point(156, 84);
+            this.CDF_LHLbl.Name = "CDF_LHLbl";
+            this.CDF_LHLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_LHLbl.TabIndex = 77;
+            this.CDF_LHLbl.Text = "---";
+            // 
+            // CDF_HSLbl
+            // 
+            this.CDF_HSLbl.AutoSize = true;
+            this.CDF_HSLbl.Location = new System.Drawing.Point(36, 114);
+            this.CDF_HSLbl.Name = "CDF_HSLbl";
+            this.CDF_HSLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_HSLbl.TabIndex = 78;
+            this.CDF_HSLbl.Text = "---";
+            // 
+            // CDF_HLLbl
+            // 
+            this.CDF_HLLbl.AutoSize = true;
+            this.CDF_HLLbl.Location = new System.Drawing.Point(96, 114);
+            this.CDF_HLLbl.Name = "CDF_HLLbl";
+            this.CDF_HLLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_HLLbl.TabIndex = 79;
+            this.CDF_HLLbl.Text = "---";
+            // 
+            // CDF_HHLbl
+            // 
+            this.CDF_HHLbl.AutoSize = true;
+            this.CDF_HHLbl.Location = new System.Drawing.Point(156, 114);
+            this.CDF_HHLbl.Name = "CDF_HHLbl";
+            this.CDF_HHLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_HHLbl.TabIndex = 80;
+            this.CDF_HHLbl.Text = "---";
             // 
             // Form1
             // 
@@ -835,23 +934,32 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label emptyLocsLbl;
         private System.Windows.Forms.Button transPosBtn;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label seaSeaTransTxt;
-        private System.Windows.Forms.Label seaLandTransTxt;
-        private System.Windows.Forms.Label landSeaTransTxt;
-        private System.Windows.Forms.Label landLandTransTxt;
         private System.Windows.Forms.Label numSeaTxt;
         private System.Windows.Forms.Label numLandTxt;
         private System.Windows.Forms.Label numEmptyTxt;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label lblDistance;
+        private System.Windows.Forms.Label numHillTxt;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label CDF_HHLbl;
+        private System.Windows.Forms.Label CDF_HLLbl;
+        private System.Windows.Forms.Label CDF_HSLbl;
+        private System.Windows.Forms.Label CDF_LHLbl;
+        private System.Windows.Forms.Label CDF_LLLbl;
+        private System.Windows.Forms.Label CDF_LSLbl;
+        private System.Windows.Forms.Label CDF_SHLbl;
+        private System.Windows.Forms.Label CDF_SLLbl;
+        private System.Windows.Forms.Label CDF_SSLbl;
     }
 }
 

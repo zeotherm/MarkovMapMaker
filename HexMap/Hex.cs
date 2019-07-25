@@ -40,6 +40,9 @@ namespace HexMap {
                     Type = State.LAND;
                     break;
                 case State.LAND:
+                    Type = State.HILL;
+                    break;
+                case State.HILL:
                     Type = State.EMPTY;
                     break;
             }

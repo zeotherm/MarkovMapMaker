@@ -28,6 +28,7 @@ namespace MarkovMapGenerator {
             InitializeComponent();
             mapperInitialized = false;
             transForm = new TransitionProbabilitiesForm();
+            //mapperInitialized = true;
         }
 
         private void pBox_Paint(object sender, PaintEventArgs e) {
@@ -55,6 +56,9 @@ namespace MarkovMapGenerator {
                             break;
                         case State.SEA:
                             b = Brushes.CornflowerBlue;
+                            break;
+                        case State.HILL:
+                            b = Brushes.SandyBrown;
                             break;
                     }
                     if (hex.Type != State.EMPTY) {
@@ -134,11 +138,31 @@ namespace MarkovMapGenerator {
         }
 
         private void UpdateTransitionDisplay() {
-            var t_mat = m.transitionMatrix;
-            seaSeaTransTxt.Text = String.Format("{0:0.000}", t_mat[(int)State.SEA, (int)State.SEA]);
-            seaLandTransTxt.Text = String.Format("{0:0.000}", t_mat[(int)State.SEA, (int)State.LAND]);
-            landSeaTransTxt.Text = String.Format("{0:0.000}", t_mat[(int)State.LAND, (int)State.SEA]);
-            landLandTransTxt.Text = String.Format("{0:0.000}", t_mat[(int)State.LAND, (int)State.LAND]);
+            double SS, SL, SH;
+            double LS, LL, LH;
+            double HS, HL, HH;
+
+            var tM = m.tM;
+
+            SS = tM[(int)State.SEA, (int)State.SEA];
+            SL = tM[(int)State.SEA, (int)State.LAND];
+            SH = tM[(int)State.SEA, (int)State.HILL];
+            LS = tM[(int)State.LAND, (int)State.SEA];
+            LL = tM[(int)State.LAND, (int)State.LAND];
+            LH = tM[(int)State.LAND, (int)State.HILL];
+            HS = tM[(int)State.HILL, (int)State.SEA];
+            HL = tM[(int)State.HILL, (int)State.LAND];
+            HH = tM[(int)State.HILL, (int)State.HILL];
+
+            CDF_SSLbl.Text = String.Format("{0:0.000}", SS);
+            CDF_SLLbl.Text = String.Format("{0:0.000}", SL);
+            CDF_SHLbl.Text = String.Format("{0:0.000}", SH);
+            CDF_LSLbl.Text = String.Format("{0:0.000}", LS);
+            CDF_LLLbl.Text = String.Format("{0:0.000}", LL);
+            CDF_LHLbl.Text = String.Format("{0:0.000}", LH);
+            CDF_HSLbl.Text = String.Format("{0:0.000}", HS);
+            CDF_HLLbl.Text = String.Format("{0:0.000}", HL);
+            CDF_HHLbl.Text = String.Format("{0:0.000}", HH);
         }
 
         private async void genBtn_ClickAsync(object sender, EventArgs e) {
@@ -213,6 +237,7 @@ namespace MarkovMapGenerator {
                 emptyLocsLbl.Text = counts.ContainsKey(State.EMPTY) ? counts[State.EMPTY].ToString() : "0";
                 numSeaTxt.Text = counts.ContainsKey(State.SEA) ? counts[State.SEA].ToString() : "0";
                 numLandTxt.Text = counts.ContainsKey(State.LAND) ? counts[State.LAND].ToString() : "0";
+                numHillTxt.Text = counts.ContainsKey(State.HILL) ? counts[State.HILL].ToString() : "0";
                 numEmptyTxt.Text = emptyLocsLbl.Text;
                 if (empties == 0) break;
 
@@ -260,6 +285,7 @@ namespace MarkovMapGenerator {
         private void transPosBtn_Click(object sender, EventArgs e) {
             if(transForm.ShowDialog() == DialogResult.OK) {
                 m = new MarkovMapper(transForm.Transitions);
+                //m = new MarkovMapper(transForm.defaultTransitions);
                 mapperInitialized = true;
                 UpdateTransitionDisplay();
             }
@@ -277,6 +303,7 @@ namespace MarkovMapGenerator {
             numEmptyTxt.Text = "0";
             numSeaTxt.Text = "0";
             numLandTxt.Text = "0";
+            numHillTxt.Text = "0";
             var groups = storage.Values.GroupBy(s => s.Type);
             foreach(var group in groups) {
                 switch(group.Key) {
@@ -288,6 +315,9 @@ namespace MarkovMapGenerator {
                         break;
                     case State.LAND:
                         numLandTxt.Text = group.Count().ToString();
+                        break;
+                    case State.HILL:
+                        numHillTxt.Text = group.Count().ToString();
                         break;
                 }
             }
