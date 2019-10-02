@@ -43,6 +43,9 @@ namespace HexMap {
                     Type = State.HILL;
                     break;
                 case State.HILL:
+                    Type = State.MOUNTAIN;
+                    break;
+                case State.MOUNTAIN:
                     Type = State.EMPTY;
                     break;
             }

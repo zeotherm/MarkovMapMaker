@@ -1,5 +1,5 @@
 ﻿namespace MarkovMapGenerator {
-    partial class Form1 {
+    partial class DebugForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -80,6 +80,18 @@
             this.numLandTxt = new System.Windows.Forms.Label();
             this.numEmptyTxt = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CDF_HHLbl = new System.Windows.Forms.Label();
+            this.CDF_HLLbl = new System.Windows.Forms.Label();
+            this.CDF_HSLbl = new System.Windows.Forms.Label();
+            this.CDF_LHLbl = new System.Windows.Forms.Label();
+            this.CDF_LLLbl = new System.Windows.Forms.Label();
+            this.CDF_LSLbl = new System.Windows.Forms.Label();
+            this.CDF_SHLbl = new System.Windows.Forms.Label();
+            this.CDF_SLLbl = new System.Windows.Forms.Label();
+            this.CDF_SSLbl = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -87,18 +99,18 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.lblDistance = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.CDF_SSLbl = new System.Windows.Forms.Label();
-            this.CDF_SLLbl = new System.Windows.Forms.Label();
-            this.CDF_SHLbl = new System.Windows.Forms.Label();
-            this.CDF_LSLbl = new System.Windows.Forms.Label();
-            this.CDF_LLLbl = new System.Windows.Forms.Label();
-            this.CDF_LHLbl = new System.Windows.Forms.Label();
-            this.CDF_HSLbl = new System.Windows.Forms.Label();
-            this.CDF_HLLbl = new System.Windows.Forms.Label();
-            this.CDF_HHLbl = new System.Windows.Forms.Label();
+            this.saveBtn = new System.Windows.Forms.Button();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.numMtnText = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.CDF_SMLbl = new System.Windows.Forms.Label();
+            this.CDF_LMLbl = new System.Windows.Forms.Label();
+            this.CDF_HMLbl = new System.Windows.Forms.Label();
+            this.CDF_MSLbl = new System.Windows.Forms.Label();
+            this.CDF_MLLbl = new System.Windows.Forms.Label();
+            this.CDF_MHLbl = new System.Windows.Forms.Label();
+            this.CDF_MMLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -503,7 +515,7 @@
             // 
             // genBtn
             // 
-            this.genBtn.Location = new System.Drawing.Point(1037, 293);
+            this.genBtn.Location = new System.Drawing.Point(1143, 375);
             this.genBtn.Name = "genBtn";
             this.genBtn.Size = new System.Drawing.Size(100, 51);
             this.genBtn.TabIndex = 44;
@@ -560,7 +572,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(13, 137);
+            this.label23.Location = new System.Drawing.Point(11, 164);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(73, 17);
             this.label23.TabIndex = 54;
@@ -569,7 +581,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(13, 154);
+            this.label24.Location = new System.Drawing.Point(11, 181);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(80, 17);
             this.label24.TabIndex = 55;
@@ -578,7 +590,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(13, 188);
+            this.label25.Location = new System.Drawing.Point(11, 235);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(87, 17);
             this.label25.TabIndex = 56;
@@ -587,7 +599,7 @@
             // numSeaTxt
             // 
             this.numSeaTxt.AutoSize = true;
-            this.numSeaTxt.Location = new System.Drawing.Point(113, 137);
+            this.numSeaTxt.Location = new System.Drawing.Point(137, 164);
             this.numSeaTxt.Name = "numSeaTxt";
             this.numSeaTxt.Size = new System.Drawing.Size(23, 17);
             this.numSeaTxt.TabIndex = 61;
@@ -596,7 +608,7 @@
             // numLandTxt
             // 
             this.numLandTxt.AutoSize = true;
-            this.numLandTxt.Location = new System.Drawing.Point(113, 154);
+            this.numLandTxt.Location = new System.Drawing.Point(137, 181);
             this.numLandTxt.Name = "numLandTxt";
             this.numLandTxt.Size = new System.Drawing.Size(23, 17);
             this.numLandTxt.TabIndex = 62;
@@ -605,7 +617,7 @@
             // numEmptyTxt
             // 
             this.numEmptyTxt.AutoSize = true;
-            this.numEmptyTxt.Location = new System.Drawing.Point(113, 188);
+            this.numEmptyTxt.Location = new System.Drawing.Point(137, 235);
             this.numEmptyTxt.Name = "numEmptyTxt";
             this.numEmptyTxt.Size = new System.Drawing.Size(23, 17);
             this.numEmptyTxt.TabIndex = 63;
@@ -613,6 +625,17 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.CDF_MMLbl);
+            this.groupBox1.Controls.Add(this.CDF_MHLbl);
+            this.groupBox1.Controls.Add(this.CDF_MLLbl);
+            this.groupBox1.Controls.Add(this.CDF_MSLbl);
+            this.groupBox1.Controls.Add(this.CDF_HMLbl);
+            this.groupBox1.Controls.Add(this.CDF_LMLbl);
+            this.groupBox1.Controls.Add(this.CDF_SMLbl);
+            this.groupBox1.Controls.Add(this.label32);
+            this.groupBox1.Controls.Add(this.numMtnText);
+            this.groupBox1.Controls.Add(this.label31);
+            this.groupBox1.Controls.Add(this.label30);
             this.groupBox1.Controls.Add(this.CDF_HHLbl);
             this.groupBox1.Controls.Add(this.CDF_HLLbl);
             this.groupBox1.Controls.Add(this.CDF_HSLbl);
@@ -638,10 +661,118 @@
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Location = new System.Drawing.Point(1083, 75);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(224, 212);
+            this.groupBox1.Size = new System.Drawing.Size(293, 269);
             this.groupBox1.TabIndex = 64;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mapper Stats";
+            // 
+            // CDF_HHLbl
+            // 
+            this.CDF_HHLbl.AutoSize = true;
+            this.CDF_HHLbl.Location = new System.Drawing.Point(172, 114);
+            this.CDF_HHLbl.Name = "CDF_HHLbl";
+            this.CDF_HHLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_HHLbl.TabIndex = 80;
+            this.CDF_HHLbl.Text = "---";
+            // 
+            // CDF_HLLbl
+            // 
+            this.CDF_HLLbl.AutoSize = true;
+            this.CDF_HLLbl.Location = new System.Drawing.Point(106, 114);
+            this.CDF_HLLbl.Name = "CDF_HLLbl";
+            this.CDF_HLLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_HLLbl.TabIndex = 79;
+            this.CDF_HLLbl.Text = "---";
+            // 
+            // CDF_HSLbl
+            // 
+            this.CDF_HSLbl.AutoSize = true;
+            this.CDF_HSLbl.Location = new System.Drawing.Point(47, 114);
+            this.CDF_HSLbl.Name = "CDF_HSLbl";
+            this.CDF_HSLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_HSLbl.TabIndex = 78;
+            this.CDF_HSLbl.Text = "---";
+            // 
+            // CDF_LHLbl
+            // 
+            this.CDF_LHLbl.AutoSize = true;
+            this.CDF_LHLbl.Location = new System.Drawing.Point(172, 84);
+            this.CDF_LHLbl.Name = "CDF_LHLbl";
+            this.CDF_LHLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_LHLbl.TabIndex = 77;
+            this.CDF_LHLbl.Text = "---";
+            // 
+            // CDF_LLLbl
+            // 
+            this.CDF_LLLbl.AutoSize = true;
+            this.CDF_LLLbl.Location = new System.Drawing.Point(106, 84);
+            this.CDF_LLLbl.Name = "CDF_LLLbl";
+            this.CDF_LLLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_LLLbl.TabIndex = 76;
+            this.CDF_LLLbl.Text = "---";
+            // 
+            // CDF_LSLbl
+            // 
+            this.CDF_LSLbl.AutoSize = true;
+            this.CDF_LSLbl.Location = new System.Drawing.Point(47, 84);
+            this.CDF_LSLbl.Name = "CDF_LSLbl";
+            this.CDF_LSLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_LSLbl.TabIndex = 75;
+            this.CDF_LSLbl.Text = "---";
+            // 
+            // CDF_SHLbl
+            // 
+            this.CDF_SHLbl.AutoSize = true;
+            this.CDF_SHLbl.Location = new System.Drawing.Point(172, 54);
+            this.CDF_SHLbl.Name = "CDF_SHLbl";
+            this.CDF_SHLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_SHLbl.TabIndex = 74;
+            this.CDF_SHLbl.Text = "---";
+            // 
+            // CDF_SLLbl
+            // 
+            this.CDF_SLLbl.AutoSize = true;
+            this.CDF_SLLbl.Location = new System.Drawing.Point(106, 54);
+            this.CDF_SLLbl.Name = "CDF_SLLbl";
+            this.CDF_SLLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_SLLbl.TabIndex = 73;
+            this.CDF_SLLbl.Text = "---";
+            // 
+            // CDF_SSLbl
+            // 
+            this.CDF_SSLbl.AutoSize = true;
+            this.CDF_SSLbl.Location = new System.Drawing.Point(47, 54);
+            this.CDF_SSLbl.Name = "CDF_SSLbl";
+            this.CDF_SSLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_SSLbl.TabIndex = 72;
+            this.CDF_SSLbl.Text = "---";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(13, 114);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(18, 17);
+            this.label29.TabIndex = 71;
+            this.label29.Text = "H";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(13, 84);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(16, 17);
+            this.label28.TabIndex = 70;
+            this.label28.Text = "L";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(13, 54);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(17, 17);
+            this.label22.TabIndex = 69;
+            this.label22.Text = "S";
             // 
             // label21
             // 
@@ -673,7 +804,7 @@
             // numHillTxt
             // 
             this.numHillTxt.AutoSize = true;
-            this.numHillTxt.Location = new System.Drawing.Point(113, 171);
+            this.numHillTxt.Location = new System.Drawing.Point(137, 198);
             this.numHillTxt.Name = "numHillTxt";
             this.numHillTxt.Size = new System.Drawing.Size(23, 17);
             this.numHillTxt.TabIndex = 65;
@@ -682,7 +813,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(13, 171);
+            this.label27.Location = new System.Drawing.Point(11, 198);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(67, 17);
             this.label27.TabIndex = 64;
@@ -706,119 +837,121 @@
             this.lblDistance.TabIndex = 66;
             this.lblDistance.Text = "---";
             // 
-            // label22
+            // saveBtn
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(13, 54);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(17, 17);
-            this.label22.TabIndex = 69;
-            this.label22.Text = "S";
+            this.saveBtn.Location = new System.Drawing.Point(1249, 375);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(94, 51);
+            this.saveBtn.TabIndex = 67;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
-            // label28
+            // label30
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(13, 84);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(16, 17);
-            this.label28.TabIndex = 70;
-            this.label28.Text = "L";
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(232, 34);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(19, 17);
+            this.label30.TabIndex = 81;
+            this.label30.Text = "M";
             // 
-            // label29
+            // label31
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(11, 114);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(18, 17);
-            this.label29.TabIndex = 71;
-            this.label29.Text = "H";
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(11, 216);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(106, 17);
+            this.label31.TabIndex = 82;
+            this.label31.Text = "Mountain Total:";
             // 
-            // CDF_SSLbl
+            // numMtnText
             // 
-            this.CDF_SSLbl.AutoSize = true;
-            this.CDF_SSLbl.Location = new System.Drawing.Point(36, 54);
-            this.CDF_SSLbl.Name = "CDF_SSLbl";
-            this.CDF_SSLbl.Size = new System.Drawing.Size(23, 17);
-            this.CDF_SSLbl.TabIndex = 72;
-            this.CDF_SSLbl.Text = "---";
+            this.numMtnText.AutoSize = true;
+            this.numMtnText.Location = new System.Drawing.Point(137, 215);
+            this.numMtnText.Name = "numMtnText";
+            this.numMtnText.Size = new System.Drawing.Size(23, 17);
+            this.numMtnText.TabIndex = 83;
+            this.numMtnText.Text = "---";
             // 
-            // CDF_SLLbl
+            // label32
             // 
-            this.CDF_SLLbl.AutoSize = true;
-            this.CDF_SLLbl.Location = new System.Drawing.Point(96, 54);
-            this.CDF_SLLbl.Name = "CDF_SLLbl";
-            this.CDF_SLLbl.Size = new System.Drawing.Size(23, 17);
-            this.CDF_SLLbl.TabIndex = 73;
-            this.CDF_SLLbl.Text = "---";
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(13, 144);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(19, 17);
+            this.label32.TabIndex = 84;
+            this.label32.Text = "M";
             // 
-            // CDF_SHLbl
+            // CDF_SMLbl
             // 
-            this.CDF_SHLbl.AutoSize = true;
-            this.CDF_SHLbl.Location = new System.Drawing.Point(156, 54);
-            this.CDF_SHLbl.Name = "CDF_SHLbl";
-            this.CDF_SHLbl.Size = new System.Drawing.Size(23, 17);
-            this.CDF_SHLbl.TabIndex = 74;
-            this.CDF_SHLbl.Text = "---";
+            this.CDF_SMLbl.AutoSize = true;
+            this.CDF_SMLbl.Location = new System.Drawing.Point(232, 54);
+            this.CDF_SMLbl.Name = "CDF_SMLbl";
+            this.CDF_SMLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_SMLbl.TabIndex = 85;
+            this.CDF_SMLbl.Text = "---";
             // 
-            // CDF_LSLbl
+            // CDF_LMLbl
             // 
-            this.CDF_LSLbl.AutoSize = true;
-            this.CDF_LSLbl.Location = new System.Drawing.Point(36, 84);
-            this.CDF_LSLbl.Name = "CDF_LSLbl";
-            this.CDF_LSLbl.Size = new System.Drawing.Size(23, 17);
-            this.CDF_LSLbl.TabIndex = 75;
-            this.CDF_LSLbl.Text = "---";
+            this.CDF_LMLbl.AutoSize = true;
+            this.CDF_LMLbl.Location = new System.Drawing.Point(232, 84);
+            this.CDF_LMLbl.Name = "CDF_LMLbl";
+            this.CDF_LMLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_LMLbl.TabIndex = 86;
+            this.CDF_LMLbl.Text = "---";
             // 
-            // CDF_LLLbl
+            // CDF_HMLbl
             // 
-            this.CDF_LLLbl.AutoSize = true;
-            this.CDF_LLLbl.Location = new System.Drawing.Point(96, 84);
-            this.CDF_LLLbl.Name = "CDF_LLLbl";
-            this.CDF_LLLbl.Size = new System.Drawing.Size(23, 17);
-            this.CDF_LLLbl.TabIndex = 76;
-            this.CDF_LLLbl.Text = "---";
+            this.CDF_HMLbl.AutoSize = true;
+            this.CDF_HMLbl.Location = new System.Drawing.Point(232, 114);
+            this.CDF_HMLbl.Name = "CDF_HMLbl";
+            this.CDF_HMLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_HMLbl.TabIndex = 87;
+            this.CDF_HMLbl.Text = "---";
             // 
-            // CDF_LHLbl
+            // CDF_MSLbl
             // 
-            this.CDF_LHLbl.AutoSize = true;
-            this.CDF_LHLbl.Location = new System.Drawing.Point(156, 84);
-            this.CDF_LHLbl.Name = "CDF_LHLbl";
-            this.CDF_LHLbl.Size = new System.Drawing.Size(23, 17);
-            this.CDF_LHLbl.TabIndex = 77;
-            this.CDF_LHLbl.Text = "---";
+            this.CDF_MSLbl.AutoSize = true;
+            this.CDF_MSLbl.Location = new System.Drawing.Point(47, 144);
+            this.CDF_MSLbl.Name = "CDF_MSLbl";
+            this.CDF_MSLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_MSLbl.TabIndex = 88;
+            this.CDF_MSLbl.Text = "---";
             // 
-            // CDF_HSLbl
+            // CDF_MLLbl
             // 
-            this.CDF_HSLbl.AutoSize = true;
-            this.CDF_HSLbl.Location = new System.Drawing.Point(36, 114);
-            this.CDF_HSLbl.Name = "CDF_HSLbl";
-            this.CDF_HSLbl.Size = new System.Drawing.Size(23, 17);
-            this.CDF_HSLbl.TabIndex = 78;
-            this.CDF_HSLbl.Text = "---";
+            this.CDF_MLLbl.AutoSize = true;
+            this.CDF_MLLbl.Location = new System.Drawing.Point(106, 144);
+            this.CDF_MLLbl.Name = "CDF_MLLbl";
+            this.CDF_MLLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_MLLbl.TabIndex = 89;
+            this.CDF_MLLbl.Text = "---";
             // 
-            // CDF_HLLbl
+            // CDF_MHLbl
             // 
-            this.CDF_HLLbl.AutoSize = true;
-            this.CDF_HLLbl.Location = new System.Drawing.Point(96, 114);
-            this.CDF_HLLbl.Name = "CDF_HLLbl";
-            this.CDF_HLLbl.Size = new System.Drawing.Size(23, 17);
-            this.CDF_HLLbl.TabIndex = 79;
-            this.CDF_HLLbl.Text = "---";
+            this.CDF_MHLbl.AutoSize = true;
+            this.CDF_MHLbl.Location = new System.Drawing.Point(172, 144);
+            this.CDF_MHLbl.Name = "CDF_MHLbl";
+            this.CDF_MHLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_MHLbl.TabIndex = 90;
+            this.CDF_MHLbl.Text = "---";
             // 
-            // CDF_HHLbl
+            // CDF_MMLbl
             // 
-            this.CDF_HHLbl.AutoSize = true;
-            this.CDF_HHLbl.Location = new System.Drawing.Point(156, 114);
-            this.CDF_HHLbl.Name = "CDF_HHLbl";
-            this.CDF_HHLbl.Size = new System.Drawing.Size(23, 17);
-            this.CDF_HHLbl.TabIndex = 80;
-            this.CDF_HHLbl.Text = "---";
+            this.CDF_MMLbl.AutoSize = true;
+            this.CDF_MMLbl.Location = new System.Drawing.Point(232, 144);
+            this.CDF_MMLbl.Name = "CDF_MMLbl";
+            this.CDF_MMLbl.Size = new System.Drawing.Size(23, 17);
+            this.CDF_MMLbl.TabIndex = 91;
+            this.CDF_MMLbl.Text = "---";
             // 
-            // Form1
+            // DebugForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1319, 628);
+            this.ClientSize = new System.Drawing.Size(1470, 628);
+            this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.lblDistance);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.groupBox1);
@@ -872,7 +1005,7 @@
             this.Controls.Add(this.flatRadio);
             this.Controls.Add(this.pointyRadio);
             this.Controls.Add(this.pBox);
-            this.Name = "Form1";
+            this.Name = "DebugForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -960,6 +1093,18 @@
         private System.Windows.Forms.Label CDF_SHLbl;
         private System.Windows.Forms.Label CDF_SLLbl;
         private System.Windows.Forms.Label CDF_SSLbl;
+        private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Label CDF_MMLbl;
+        private System.Windows.Forms.Label CDF_MHLbl;
+        private System.Windows.Forms.Label CDF_MLLbl;
+        private System.Windows.Forms.Label CDF_MSLbl;
+        private System.Windows.Forms.Label CDF_HMLbl;
+        private System.Windows.Forms.Label CDF_LMLbl;
+        private System.Windows.Forms.Label CDF_SMLbl;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label numMtnText;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
     }
 }
 

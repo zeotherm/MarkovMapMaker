@@ -5,13 +5,14 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HexMap;
 
 namespace MarkovMapGenerator {
-    public partial class Form1 : Form {
+    public partial class DebugForm : Form {
         private Layout l;
         private Dictionary<Tuple<int, int>, Hex> storage = new Dictionary<Tuple<int, int>, Hex>();
         private List<Brush> ColorWheel = new List<Brush> { Brushes.Red, Brushes.Orange, Brushes.Yellow, Brushes.Green, Brushes.Blue, Brushes.Purple };
@@ -24,7 +25,7 @@ namespace MarkovMapGenerator {
         private bool mapperInitialized;
         private TransitionProbabilitiesForm transForm;
 
-        public Form1() {
+        public DebugForm() {
             InitializeComponent();
             mapperInitialized = false;
             transForm = new TransitionProbabilitiesForm();
@@ -32,11 +33,6 @@ namespace MarkovMapGenerator {
         }
 
         private void pBox_Paint(object sender, PaintEventArgs e) {
-            // determine how many hexagons we can fit in the space given a size value
-            // N hexagons high = hex_height*(1 + 0.75*N) total height
-            // (size.h/hex_height - 1)/0.75 = N high
-            // M hexagons wide = hex_width*(M + 0.5) total width
-            // (size.w/hex_width - 0.5) = M wide
             lblWide.Text = M.ToString();
             lblHigh.Text = N.ToString();
             lblWidth.Text = String.Format("{0:0.000}", hex_width);
@@ -49,7 +45,7 @@ namespace MarkovMapGenerator {
                     var points = l.PolygonCorners(hex);
                     //e.Graphics.DrawPolygon(big_pen, points);
                     Brush b = Brushes.Black;
-                    e.Graphics.DrawPolygon(new Pen(Brushes.Black, 1), points);
+                    //e.Graphics.DrawPolygon(new Pen(Brushes.Black, 1), points);
                     switch (hex.Type) {
                         case State.LAND:
                             b = Brushes.Green;
@@ -59,6 +55,9 @@ namespace MarkovMapGenerator {
                             break;
                         case State.HILL:
                             b = Brushes.SandyBrown;
+                            break;
+                        case State.MOUNTAIN:
+                            b = Brushes.DarkGray;
                             break;
                     }
                     if (hex.Type != State.EMPTY) {
@@ -138,31 +137,46 @@ namespace MarkovMapGenerator {
         }
 
         private void UpdateTransitionDisplay() {
-            double SS, SL, SH;
-            double LS, LL, LH;
-            double HS, HL, HH;
+            double SS, SL, SH, SM;
+            double LS, LL, LH, LM;
+            double HS, HL, HH, HM;
+            double MS, ML, MH, MM;
 
             var tM = m.tM;
 
             SS = tM[(int)State.SEA, (int)State.SEA];
             SL = tM[(int)State.SEA, (int)State.LAND];
             SH = tM[(int)State.SEA, (int)State.HILL];
+            SM = tM[(int)State.SEA, (int)State.MOUNTAIN];
             LS = tM[(int)State.LAND, (int)State.SEA];
             LL = tM[(int)State.LAND, (int)State.LAND];
             LH = tM[(int)State.LAND, (int)State.HILL];
+            LM = tM[(int)State.LAND, (int)State.MOUNTAIN];
             HS = tM[(int)State.HILL, (int)State.SEA];
             HL = tM[(int)State.HILL, (int)State.LAND];
             HH = tM[(int)State.HILL, (int)State.HILL];
+            HM = tM[(int)State.HILL, (int)State.MOUNTAIN];
+            MS = tM[(int)State.MOUNTAIN, (int)State.SEA];
+            ML = tM[(int)State.MOUNTAIN, (int)State.LAND];
+            MH = tM[(int)State.MOUNTAIN, (int)State.HILL];
+            MM = tM[(int)State.MOUNTAIN, (int)State.MOUNTAIN];
 
             CDF_SSLbl.Text = String.Format("{0:0.000}", SS);
             CDF_SLLbl.Text = String.Format("{0:0.000}", SL);
             CDF_SHLbl.Text = String.Format("{0:0.000}", SH);
+            CDF_SMLbl.Text = String.Format("{0:0.000}", SM);
             CDF_LSLbl.Text = String.Format("{0:0.000}", LS);
             CDF_LLLbl.Text = String.Format("{0:0.000}", LL);
             CDF_LHLbl.Text = String.Format("{0:0.000}", LH);
+            CDF_LMLbl.Text = String.Format("{0:0.000}", LM);
             CDF_HSLbl.Text = String.Format("{0:0.000}", HS);
             CDF_HLLbl.Text = String.Format("{0:0.000}", HL);
             CDF_HHLbl.Text = String.Format("{0:0.000}", HH);
+            CDF_HMLbl.Text = String.Format("{0:0.000}", HM);
+            CDF_MSLbl.Text = String.Format("{0:0.000}", MS);
+            CDF_MLLbl.Text = String.Format("{0:0.000}", ML);
+            CDF_MHLbl.Text = String.Format("{0:0.000}", MH);
+            CDF_MMLbl.Text = String.Format("{0:0.000}", MM);
         }
 
         private async void genBtn_ClickAsync(object sender, EventArgs e) {
@@ -238,6 +252,7 @@ namespace MarkovMapGenerator {
                 numSeaTxt.Text = counts.ContainsKey(State.SEA) ? counts[State.SEA].ToString() : "0";
                 numLandTxt.Text = counts.ContainsKey(State.LAND) ? counts[State.LAND].ToString() : "0";
                 numHillTxt.Text = counts.ContainsKey(State.HILL) ? counts[State.HILL].ToString() : "0";
+                numMtnText.Text = counts.ContainsKey(State.MOUNTAIN) ? counts[State.MOUNTAIN].ToString() : "0";
                 numEmptyTxt.Text = emptyLocsLbl.Text;
                 if (empties == 0) break;
 
@@ -299,11 +314,24 @@ namespace MarkovMapGenerator {
             UpdateDetailsText();
         }
 
+        private void saveBtn_Click(object sender, EventArgs e) {
+            using (Bitmap bitmap = new Bitmap(pBox.Width, pBox.Height)) {
+                using (Graphics graphics = Graphics.FromImage(bitmap)) {
+                    graphics.Clear(Color.Transparent);
+                    graphics.DrawImage(pBox.Image, (bitmap.Width - pBox.Image.Width) / 2, (bitmap.Height - pBox.Image.Height) / 2);
+                }
+
+                var dir = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                bitmap.Save($@"{dir}\map.png", ImageFormat.Png);
+            }
+        }
+
         private void UpdateDetailsText() {
             numEmptyTxt.Text = "0";
             numSeaTxt.Text = "0";
             numLandTxt.Text = "0";
             numHillTxt.Text = "0";
+            numMtnText.Text = "0";
             var groups = storage.Values.GroupBy(s => s.Type);
             foreach(var group in groups) {
                 switch(group.Key) {
@@ -318,6 +346,9 @@ namespace MarkovMapGenerator {
                         break;
                     case State.HILL:
                         numHillTxt.Text = group.Count().ToString();
+                        break;
+                    case State.MOUNTAIN:
+                        numMtnText.Text = group.Count().ToString();
                         break;
                 }
             }
