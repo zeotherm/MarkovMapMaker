@@ -18,7 +18,7 @@ namespace MarkovMapGenerator {
             defaultTransitions = new double[4, 4]{{0.990, 0.010, 0.000, 0.000},
                                                   {0.005, 0.945, 0.040, 0.010},
                                                   {0.000, 0.750, 0.200, 0.050},
-                                                  {0.001, 0.049, 0.400, 0.450}};
+                                                  {0.001, 0.049, 0.400, 0.550}};
 
             landEntries = new List<TextBox> { landLandTxt, landSeaTxt, landHillText, landMtnText };
             seaEntries = new List<TextBox> { seaLandTxt, seaSeaTxt, seaHillText, seaMtnText };

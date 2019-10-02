@@ -262,7 +262,7 @@ namespace MarkovMapGenerator {
             this.Refresh();
         }
         private async Task DrawNewState(Hex markovBasis, Tuple<int, int> newHexCoords) {
-            await Task.Delay(10);
+            //await Task.Delay(10);
             var thisHex = storage[newHexCoords];
             var neighbors = thisHex.Neighbors();
             foreach( var n in neighbors) {
